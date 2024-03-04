@@ -1,3 +1,35 @@
 .taskItem {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  border: 1px solid var(--gray-400);
+  border-radius: 8px;
+
+  background-color: var(--gray-500);
+  color: var(--gray-100);
+
+
+  margin-bot: 0.75rem;
+  padding: 1rem;
+}
+
+.taskItem div {
+    display: flex;
+}
+
+.taskItem input {
+    display: flex;
+
+    border-radius: full;
+}
+
+.taskItemText {
     
 }
+
+.checkbox {
+    
+}
+
