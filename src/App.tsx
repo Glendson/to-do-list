@@ -1,23 +1,33 @@
-import { PlusCircle } from '@phosphor-icons/react'
+import { PlusCircle } from "phosphor-react";
 
 import { Button } from "./components/Button";
 import { Header } from "./components/Header";
 import { Input } from "./components/Input";
+
+import styles from "./App.module.css";
+
 import "./global.css";
+import { HeaderTasks } from "./components/tasks/Header";
 
 function App() {
   return (
-    <div>
+    <main>
       <Header />
 
-      <div>
-        <Input />
-        <Button>
-          Criar
-          <PlusCircle />
-        </Button>
-      </div>
-    </div>
+      <section className={styles.taskInfo}>
+        <div className={styles.addTask}>
+          <Input />
+          <Button>
+            Criar
+            <PlusCircle size={16} fill="bold" color="#f2f2f2" />
+          </Button>
+        </div>
+
+        <div className={styles.taskList}>
+          <HeaderTasks tasksCompleted={0} tasksCount={0} />
+        </div>
+      </section>
+    </main>
   );
 }
 
