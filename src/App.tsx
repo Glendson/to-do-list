@@ -8,6 +8,7 @@ import styles from "./App.module.css";
 
 import "./global.css";
 import { HeaderTasks } from "./components/tasks/Header";
+import { Empty } from "./components/tasks/Empty";
 
 function App() {
   return (
@@ -25,6 +26,8 @@ function App() {
 
         <div className={styles.taskList}>
           <HeaderTasks tasksCompleted={0} tasksCount={0} />
+
+          <Empty />
         </div>
       </section>
     </main>
