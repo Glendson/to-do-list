@@ -1,15 +1,22 @@
 import { PlusCircle } from "phosphor-react";
 
-import { Button } from "./components/Button";
-import { Header } from "./components/Header";
-import { Input } from "./components/Input";
+import { Button } from "./components/Button/Button";
+import { Header } from "./components/Header/Header";
+import { Input } from "./components/Input/Input";
+
+import { HeaderTasks } from "./components/tasks/Header";
+import { Empty } from "./components/tasks/Empty";
+import { TaskItem } from "./components/tasks/TaskItem";
 
 import styles from "./App.module.css";
 
 import "./global.css";
-import { HeaderTasks } from "./components/tasks/Header";
-import { Empty } from "./components/tasks/Empty";
-import { TaskItem } from "./components/tasks/TaskItem";
+
+export interface TaskData {
+  id: number;
+  text: string;
+  isChecked: boolean;
+}
 
 function App() {
   return (

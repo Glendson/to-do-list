@@ -1,20 +1,30 @@
 .taskInfo {
-    max-width: 46rem;
-    width: 100%;
+  max-width: 46rem;
+  width: 100%;
 
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
 .addTask {
-    display: flex;
-    flex: 1;
+  display: flex;
+  flex: 1;
 
-    justify-content: space-between;
-    gap: 0.5rem;
+  justify-content: space-between;
+  gap: 0.5rem;
 
-    margin-top: -25px;
+  margin-top: -25px;
 }
 
 .taskList {
-    margin-top: 2.3125rem;
+  margin-top: 2.3125rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.taskList > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
