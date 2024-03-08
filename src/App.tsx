@@ -36,7 +36,7 @@ function App() {
       isChecked: false,
     };
 
-    setTasks([...tasks, addNewTask]);
+    setTasks((state) => [...state, addNewTask]);
     setNewTaskText("");
   }
 
@@ -69,9 +69,8 @@ function App() {
             tasks.map((task) => (
               <TaskItem
                 key={task.id}
-                data={tasks}
+                data={task}
                 onDeleteTask={handleDeleteTask}
-                isChecked={true}
               />
             ))
           ) : (
