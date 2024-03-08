@@ -13,7 +13,7 @@ import { TaskItem } from "./components/tasks/TaskItem";
 import styles from "./App.module.css";
 
 import "./global.css";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 export interface TaskData {
   id: string;
@@ -25,8 +25,12 @@ function App() {
   const [tasks, setTasks] = useState<TaskData[]>([]);
   const [newTaskText, setNewTaskText] = useState("");
 
+  const taskEmpty = newTaskText.length == 0;
+
   function handleCreateNewTask() {
-    const addNewTask: TaskData = {
+    if (taskEmpty) return;
+
+    const addNewTask = {
       id: uuid(),
       text: newTaskText,
       isChecked: false,
@@ -36,11 +40,14 @@ function App() {
     setNewTaskText("");
   }
 
-  function handleNewTextTaskChange() {
-    setNewTaskText(event?.target.value);
+  function handleNewTextTaskChange(event: ChangeEvent<HTMLInputElement>) {
+    setNewTaskText(event.target.value);
   }
 
-  function handleDeleteTasks() {}
+  function handleDeleteTask(id: string) {
+    const taskWithoutDeletedOne = tasks.filter((task) => task.id !== id);
+    setTasks(taskWithoutDeletedOne);
+  }
 
   return (
     <main>
@@ -49,23 +56,23 @@ function App() {
       <section className={styles.taskInfo}>
         <div className={styles.addTask}>
           <Input onChange={handleNewTextTaskChange} value={newTaskText} />
-          <Button onClick={handleCreateNewTask}>
+          <Button onClick={handleCreateNewTask} disabled={taskEmpty}>
             Criar
             <PlusCircle size={16} fill="bold" color="#f2f2f2" />
           </Button>
         </div>
 
         <div className={styles.taskList}>
-          <HeaderTasks tasksCompleted={0} tasksCount={0} />
+          <HeaderTasks tasksCompleted={0} tasksCount={tasks.length} />
 
           {tasks.length > 0 ? (
-            
             tasks.map((task) => (
               <TaskItem
                 key={task.id}
                 data={tasks}
-                deleteTask={handleDeleteTasks}
-              />              
+                onDeleteTask={handleDeleteTask}
+                isChecked={true}
+              />
             ))
           ) : (
             <Empty />

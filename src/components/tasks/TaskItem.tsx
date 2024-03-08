@@ -4,12 +4,12 @@ import { TaskData } from "../../App";
 
 interface TaskItemProps {
   data: TaskData;
-  deleteTask: (id: string) => void;
+  onDeleteTask: (id: string) => void;
 }
 
-export function TaskItem({ deleteTask, data }: TaskItemProps) {
+export function TaskItem({ onDeleteTask, data }: TaskItemProps) {
   function handleDeleteTask() {
-    deleteTask(data.id);
+    onDeleteTask(data.id);
   }
 
   return (
@@ -18,11 +18,9 @@ export function TaskItem({ deleteTask, data }: TaskItemProps) {
         <label htmlFor="checkbox">
           <input type="checkbox" readOnly />
           <span className={styles.taskItemText}>
-            <Check size={12} />
+            {data.isChecked && <Check size={12} />}
           </span>
-          <p>
-            {data.text}
-          </p>
+          <p>{data.text}</p>
         </label>
 
         <button onClick={handleDeleteTask}>

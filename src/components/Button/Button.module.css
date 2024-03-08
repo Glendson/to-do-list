@@ -22,6 +22,6 @@
   transition: background-color 0.2s;
 }
 
-.button:hover {
+.button:not(:disabled):hover {
   background: var(--blue);
 }
