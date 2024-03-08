@@ -4,7 +4,7 @@ import { TaskData } from "../../App";
 
 interface TaskItemProps {
   data: TaskData;
-  deleteTask: (id: number) => void;
+  deleteTask: (id: string) => void;
 }
 
 export function TaskItem({ deleteTask, data }: TaskItemProps) {
@@ -21,8 +21,7 @@ export function TaskItem({ deleteTask, data }: TaskItemProps) {
             <Check size={12} />
           </span>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
-            natus libero aut est eius! Voluptates quam dolorem nulla magnam.
+            {data.text}
           </p>
         </label>
 
