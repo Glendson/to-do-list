@@ -49,6 +49,14 @@ function App() {
     setTasks(taskWithoutDeletedOne);
   }
 
+  function handleTaskSwitch({ id, value }: { id: string; value: boolean }) {
+    const updatedTasks = tasks.map((task) =>
+      task.id === id ? { ...task, isChecked: value } : task
+    );
+
+    setTasks(updatedTasks);
+  }
+
   return (
     <main>
       <Header />
@@ -71,6 +79,7 @@ function App() {
                 key={task.id}
                 data={task}
                 onDeleteTask={handleDeleteTask}
+                onTaskSwitch={handleTaskSwitch}
               />
             ))
           ) : (
