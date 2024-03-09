@@ -14,7 +14,7 @@ export function HeaderTasks({ tasksCount, tasksCompleted }: HeaderTasksProps) {
       </aside>
 
       <aside className={styles.completedTasks}>
-        <p>Concluidas</p>
+        <p>Concluídas</p>
         <span>{tasksCompleted}</span>
       </aside>
     </header>

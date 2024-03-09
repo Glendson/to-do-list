@@ -27,6 +27,11 @@ function App() {
 
   const taskEmpty = newTaskText.length == 0;
 
+  const completedTasks: number = tasks.reduce(
+    (checkedTasks, task) => (task.isChecked ? checkedTasks + 1 : checkedTasks),
+    0
+  );
+
   function handleCreateNewTask() {
     if (taskEmpty) return;
 
@@ -71,17 +76,22 @@ function App() {
         </div>
 
         <div className={styles.taskList}>
-          <HeaderTasks tasksCompleted={0} tasksCount={tasks.length} />
+          <HeaderTasks
+            tasksCompleted={completedTasks}
+            tasksCount={tasks.length}
+          />
 
           {tasks.length > 0 ? (
-            tasks.map((task) => (
-              <TaskItem
-                key={task.id}
-                data={task}
-                onDeleteTask={handleDeleteTask}
-                onTaskSwitch={handleTaskSwitch}
-              />
-            ))
+            <div>
+              {tasks.map((task) => (
+                <TaskItem
+                  key={task.id}
+                  data={task}
+                  onDeleteTask={handleDeleteTask}
+                  onTaskSwitch={handleTaskSwitch}
+                />
+              ))}
+            </div>
           ) : (
             <Empty />
           )}
